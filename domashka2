@@ -1,0 +1,107 @@
+ В GitHub создали новый репозиторий - Create a new repository - Projects
+ Создали папку у себя локально и Склонировали себе git clone https://github.com/IldanaFrolova/Projects.git
+
+1. На локальном репозитории сделать ветки для:
+   git branch Postman
+   git branch Jmeter
+   git branch CheckLists
+   git branch Bag Reports
+   git branch SQL
+   git branch Charles
+   git branch Mobile testing
+   
+2. Запушить все ветки на внешний репозиторий
+   
+   git push -u origin Postman
+   git push -u origin Jmeter
+   git push -u origin CheckLists
+   git push -u origin Bag Reports
+   git push -u origin SQL
+   git push -u origin Charles
+   git push -u origin Mobile testing
+
+3. В ветке Bag Reports сделать текстовый документ со структурой баг репорта
+
+  git checkout Bug_reports - переходим на ветку Bug_reports
+  touch bug_reports.txt - создаем текстовый файл
+  vim bug_reports.txt - 
+	1.Идентификатор
+	2.Краткое описание
+	3.Подробное описание
+	4.Шаги по воспроизведению
+	5.Воспроизводимость
+	6.Важность
+	7.Срочность
+	8.Комментарии
+	9.Вложения
+	
+4. Запушить структуру багрепорта на внешний репозиторий
+
+  git add bug_reports.txt
+  git commit -m "add bug report"
+  git push
+
+5. Вмержить ветку Bag Reports в Main
+
+  git checkout main  - Встали в ту ветку куда хотим мержить 
+  git merge Bug_reports
+  
+6. Запушить main на внешний репозиторий
+
+  git push -u origin main
+  
+7. В ветке CheckLists набросать структуру чек листа
+
+  git checkout CheckLists - переходим на ветку CheckLists 
+  touch checklist.txt - создаем текстовый файл
+  vim checklist.txt -   1. типичные пользовательские сценарии
+			2. различные уровни функционального тестирования
+			3. отдельные части (модулей и подмодулей) приложения
+			4. отдельные требования, групп требований, уровней и типов требований
+			5. частей или функций приложения, наиболее подверженных рискам.
+			
+8. Запушить структуру на внешний репозиторий			
+  git add checklist.txt
+  git commit -m "add checklist"
+  git push
+  
+9. На внешнем репозитории сделать Pull Request ветки CheckLists в main
+
+  В GitHub рядом с веточкой CheckLists нажимаем на зеленую кнопку Compare&pull requset.
+  В окно сообщения пишем сообщение ( add checklist например) и нажимаем Create pull request
+
+  Merge pull request  - нажимает тех.лид
+
+10. Синхронизировать Внешнюю и Локальную ветки Main
+
+  git checkout main
+  git fetch
+  git pull
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+    
+
+
+
+
+
