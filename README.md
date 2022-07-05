@@ -144,57 +144,57 @@ HW_2 Postman
 4) http://162.55.220.72:5005/object_info_4
     1. Отправить запрос.
   
-        //2. Статус код 200
+        // 2. Статус код 200
         pm.test("Status code is 200", function () {
             pm.response.to.have.status(200);
         });
 
-        //3. Спарсить response body в json.
+        // 3. Спарсить response body в json.
          let resbody = pm.response.json();   // to parse json response
 
-         //4. Спарсить request.
+         // 4. Спарсить request.
         let reqBody = pm.request.url.query.toObject() //  to parse json request
 
-        //5. Проверить, что name в ответе равно name s request (name забрать из request.)
+        // 5. Проверить, что name в ответе равно name s request (name забрать из request.)
         let name_req = reqBody.name
         pm.test("Check name response", function () { 
             pm.expect(resbody.name).to.eql(name_req);
         });
 
-        //6. Проверить, что age в ответе равно age из request (age забрать из request.)
+        // 6. Проверить, что age в ответе равно age из request (age забрать из request.)
         let age_req = reqBody.age
         pm.test("Check age response", function () { 
             pm.expect(resbody.age).to.eql(+age_req);
         });
 
-        //7. Вывести в консоль параметр salary из request
+        // 7. Вывести в консоль параметр salary из request
         let salary_req = reqBody.salary
         //console.log(salary_req);
 
-        //8. Вывести в консоль параметр salary из response
+        // 8. Вывести в консоль параметр salary из response
         let salary_res = resbody.salary
         //console.log(salary_res);
 
-        //9. Вывести в консоль 0-й элемент параметра salary из response.
+        // 9. Вывести в консоль 0-й элемент параметра salary из response.
         //console.log(salary_res[0]);
 
-        //10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
+        // 10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
         //console.log(salary_res[1]);
 
-        //11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
+        // 11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
         //console.log(salary_res[2]);
 
-        //12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
+        // 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
         pm.test("Check salary[0]", function () { 
             pm.expect(salary_res[0]).to.eql(+salary_req);
         });
 
-        //13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
+        // 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
         pm.test("Check salary[1]", function () { 
             pm.expect(+salary_res[1]).to.eql(salary_req*2);
         });
 
-        //14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
+        // 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
         pm.test("Check salary[2]", function () { 
             pm.expect(+salary_res[2]).to.eql(salary_req*3);
         });
@@ -208,7 +208,7 @@ HW_2 Postman
         // 20. Передать в окружение переменную salary  
              pm.environment.set("salary",salary_req); 
 
-        //21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
+        // 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
         let salary = resbody.salary;
         for (let i=0; i<salary.length; i+=1){
         console.log(salary[i])}
@@ -225,86 +225,86 @@ HW_2 Postman
             pm.response.to.have.status(200);
         });
 
-        //6. Спарсить response body в json
+        // 6. Спарсить response body в json
         
         let resbody = pm.response.json();
 
-        //7. Спарсить request.
+        // 7. Спарсить request.
         
         let reqbody = request.data;
 
-        //8. Проверить, что json response имеет параметр start_qa_salary
+        // 8. Проверить, что json response имеет параметр start_qa_salary
         
         pm.test("response has parametr start_qa_salary", function () {
             pm.expect(resbody).to.have.property("start_qa_salary");
         });
 
-        //9. Проверить, что json response имеет параметр qa_salary_after_6_months
+        // 9. Проверить, что json response имеет параметр qa_salary_after_6_months
         
         pm.test("response has parametr qa_salary_after_6_months", function () {
             pm.expect(resbody).to.have.property("qa_salary_after_6_months");
         });
 
-        //10. Проверить, что json response имеет параметр qa_salary_after_12_months
+        // 10. Проверить, что json response имеет параметр qa_salary_after_12_months
         
         pm.test("response has parametr qa_salary_after_12_months", function () {
             pm.expect(resbody).to.have.property("qa_salary_after_12_months");
         });
 
-        //11. Проверить, что json response имеет параметр qa_salary_after_1.5_year
+        // 11. Проверить, что json response имеет параметр qa_salary_after_1.5_year
         
         pm.test("response has parametr qa_salary_after_1.5_year", function () {
             pm.expect(resbody).to.have.property("qa_salary_after_1.5_year");
         });
 
-        //12. Проверить, что json response имеет параметр qa_salary_after_3.5_years
+        // 12. Проверить, что json response имеет параметр qa_salary_after_3.5_years
         
         pm.test("response has parametr qa_salary_after_3.5_years", function () {
             pm.expect(resbody).to.have.property("qa_salary_after_3.5_years");
         });
 
-        //13. Проверить, что json response имеет параметр person
+        // 13. Проверить, что json response имеет параметр person
         
         pm.test("response has person", function () {
             pm.expect(resbody).to.have.property("person");
         });
 
-        //14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)
+        // 14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)
         
         let salary_req = +reqbody.salary
         pm.test("Check_start_qa_salary", function () {
             pm.expect(resbody.start_qa_salary).to.eql(salary_req);
         });
 
-        //15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)
+        // 15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)
         
         let salary_req2 = reqbody.salary * 2
         pm.test("Check_qa_salary_after_6_months", function () {
             pm.expect(resbody.qa_salary_after_6_months).to.eql(salary_req2);
         });
 
-        //16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)
+        // 16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)
         
         let salary_req3 = reqbody.salary * 2.7
         pm.test("qa_salary_after_12_months", function () {
             pm.expect(resbody.qa_salary_after_12_months).to.eql(salary_req3);
         });
 
-        //17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)
+        // 17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)
         
         let salary_req4 = reqbody.salary * 3.3
         pm.test("qa_salary_after_1.5_year", function () {
             pm.expect(resbody["qa_salary_after_1.5_year"]).to.eql(salary_req4);
         });
 
-        //18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)
+        // 18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)
         
         let salary_req5 = reqbody.salary * 3.8
         pm.test("qa_salary_after_3.5_years", function () {
             pm.expect(resbody["qa_salary_after_3.5_years"]).to.eql(salary_req5);
         });
 
-        //19. Проверить, что в параметре person, 1-й элемент из u_name равен salary из request (salary забрать из request.)
+        // 19. Проверить, что в параметре person, 1-й элемент из u_name равен salary из request (salary забрать из request.)
         
         let salary_req6 = +reqbody.salary
         let person_salary = resbody.person.u_name[1];
@@ -313,7 +313,7 @@ HW_2 Postman
             pm.expect(person_salary).to.eql(salary_req6);
         });
 
-        //20. Проверить, что что параметр u_age равен age из request (age забрать из request.)
+        // 20. Проверить, что что параметр u_age равен age из request (age забрать из request.)
         
         let age_req = +reqbody.age
         let u_age = resbody.person.u_age
@@ -322,7 +322,7 @@ HW_2 Postman
             pm.expect(u_age).to.eql(age_req);
         });
 
-        //21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request.)
+        // 21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request.)
         
         let salary_req7 = +reqbody.salary * 4.2
         let u_salary_5_years = resbody.person.u_salary_5_years
@@ -331,7 +331,7 @@ HW_2 Postman
             pm.expect(u_salary_5_years).to.eql(salary_req7);
         });
 
-        //22. ***Написать цикл который выведет в консоль по порядку элементы списка из параметра person.
+        // 22. Написать цикл который выведет в консоль по порядку элементы списка из параметра person.
         
         let person2 = resbody.person;
         let keys= Object.keys(person2) //преобразуем ключи объекта в массив
