@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "f11151d1-2839-431c-8a8b-d80df90bfc5b",
+		"name": "HW_3 Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18761226"
+	},
+	"item": [
+		{
+			"name": "object_info_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// /http://162.55.220.72:5007/object_info_4",
+							"// * Преобразовать пункты 12-13-14 (salary из реквеста и респонса равны) таким образом, чтобы проверка производилась циклом, в котором будет всего ОДИН тест. Имя теста должно меняться в зависимости от значения в Salary",
+							"// 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)",
+							"// 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)",
+							"// 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)",
+							"",
+							" let req_sal = pm.request.url.query.get('salary')",
+							"//console.log(req_sal);",
+							"",
+							"let res_sal = pm.response.json().salary",
+							"//console.log(res_sal);",
+							"",
+							"//  for(let i = 0; i <= res_sal.length-1; i++){",
+							"//      pm.test(`req_sal*${i+1}  ${req_sal}== res_sal ${res_sal[i]}`, function(){",
+							"//          pm.expect(+req_sal*(i+1)).to.eql(+res_sal[i])",
+							"//          //console.log(+req_sal*(i+1))",
+							"//      })",
+							"//  }",
+							"",
+							"//через forEach",
+							"res_sal.forEach((e, i) =>{",
+							"    pm.test(`req_sal*${i+1}  ${req_sal}== res_sal ${e}`, function(){",
+							"         pm.expect(+req_sal*(i+1)).to.eql(+e)",
+							"         //console.log(+req_sal*(i+1))",
+							"     })",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Ildana&age=39&salary=2000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ildana"
+						},
+						{
+							"key": "age",
+							"value": "39"
+						},
+						{
+							"key": "salary",
+							"value": "2000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_3 (глубокое сравнение объектов)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Преобразовать задания 5-7 (сравнить идентичные поля в реквесте и респонсе) таким образом, чтобы это делалось ЗА ОДИН ТЕСТ (сразу все 3 поля) БЕЗ ЦИКЛОВ! (глубокое сравнение объектов)",
+							"",
+							"// 5. Проверить, что name в ответе равно name s request (name забрать из request.)",
+							"// 6. Проверить, что age в ответе равно age s request (age забрать из request.)",
+							"// 7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)",
+							"",
+							"let req_sal = +pm.request.url.query.get('salary')",
+							"let req_name = pm.request.url.query.get('name')",
+							"let req_age = +pm.request.url.query.get('age')",
+							"// console.log(req_sal)",
+							"// console.log(req_name)",
+							"// console.log(req_age)",
+							"",
+							"let res_sal = +pm.response.json().salary",
+							"let res_name = pm.response.json().name",
+							"let res_age = +pm.response.json().age",
+							"// console.log(res_sal)",
+							"// console.log(res_name)",
+							"// console.log(res_age)",
+							"",
+							"const req_obj = {",
+							"     age:req_age,",
+							"     name:req_name,",
+							"     salary:req_sal",
+							"}     // создали объект со значениями из request",
+							"//console.log(req_obj);",
+							"",
+							"const res_obj = {",
+							"     age:res_age,",
+							"     name:res_name,",
+							"     salary:res_sal",
+							"}     // создали объект со значениями из respons",
+							"//console.log(req_obj);",
+							"",
+							"pm.test('Resp_obj == req_obj', function(){",
+							"    pm.expect(req_obj).to.deep.equal(res_obj)",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_3?name=Ildana&age=39&salary=2000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ildana"
+						},
+						{
+							"key": "age",
+							"value": "39"
+						},
+						{
+							"key": "salary",
+							"value": "2000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
