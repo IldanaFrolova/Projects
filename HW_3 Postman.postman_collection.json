@@ -161,6 +161,114 @@
 				}
 			},
 			"response": []
+<<<<<<< HEAD
+		},
+		{
+			"name": "user_info_2/проверки в цикле",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//  Проверить, что json response имеет параметр start_qa_salary",
+							"//  Проверить, что json response имеет параметр qa_salary_after_6_months",
+							"//  Проверить, что json response имеет параметр qa_salary_after_12_months",
+							"//  Проверить, что json response имеет параметр qa_salary_after_1.5_year",
+							"//  Проверить, что json response имеет параметр qa_salary_after_3.5_years",
+							"//  Проверить, что json response имеет параметр person",
+							"",
+							"let arr = [] //создали массив",
+							"const response = pm.response.json();",
+							"",
+							"for(const key in response) {",
+							"    arr.push(key);",
+							"}",
+							"console.log(arr);",
+							"",
+							"arr.forEach((e) => {",
+							"    pm.test(`response has a ${e}`,function(){",
+							"pm.expect(response).to.have.property(e)",
+							"    })",
+							"})",
+							"",
+							"// 2) ** (проверить что параметр равен salary умножить на коэффициент) таким образом, чтобы все проверки делались в цикле (1 проверка в цикле, в которую попадают нужные параметры). Название теста должно видоизменяться исходя из подаваемых данных. ",
+							"// Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)",
+							"// Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)",
+							"// Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)",
+							"// Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)",
+							"// Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)",
+							"",
+							"const count = ['', 3.3, 2.7, 3.8, 2, 1] //  создали массив",
+							"arr.forEach((e, i) => {",
+							"    if (e != 'person')",
+							"    pm.test(`response has a ${e}`,function(){",
+							"pm.expect(+response[e]).to.equal(2000 * count[i])",
+							"    })",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ildana",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "39",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ildana",
+							"disabled": true
+						},
+						{
+							"key": "age",
+							"value": "39",
+							"disabled": true
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+=======
+>>>>>>> 56f4fc3b9f077819b0628296c712ca50aef1a61a
 		}
 	]
 }
